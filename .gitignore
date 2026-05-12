@@ -1,0 +1,13 @@
+target/
+.idea/
+.vscode/
+*.iml
+.env
+.DS_Store
+logs/
+
+.fake
+
+# Java crash logs
+hs_err_pid*.log
+replay_pid*.log

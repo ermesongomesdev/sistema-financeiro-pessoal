@@ -1,0 +1,119 @@
+### Registrar usuário
+POST http://localhost:8080/api/auth/register
+Content-Type: application/json
+
+{
+  "name": "Ermeson Gomes",
+  "email": "ermeson@email.com",
+  "password": "12345678"
+}
+
+### Login
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "ermeson@email.com",
+  "password": "12345678"
+}
+
+### Listar carteiras
+GET http://localhost:8080/api/households
+Authorization: Bearer {{token}}
+
+### Criar categoria de receita
+POST http://localhost:8080/api/categories
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "householdId": 1,
+  "name": "Salário",
+  "type": "INCOME",
+  "color": "#22c55e"
+}
+
+### Criar categoria de despesa
+POST http://localhost:8080/api/categories
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "householdId": 1,
+  "name": "Aluguel",
+  "type": "EXPENSE",
+  "color": "#ef4444"
+}
+
+### Criar receita
+POST http://localhost:8080/api/transactions
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "householdId": 1,
+  "categoryId": 1,
+  "description": "Salário mensal",
+  "amount": 3500.00,
+  "type": "INCOME",
+  "dueDate": "2026-05-10",
+  "paid": true
+}
+
+### Criar despesa
+POST http://localhost:8080/api/transactions
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "householdId": 1,
+  "categoryId": 2,
+  "description": "Aluguel",
+  "amount": 900.00,
+  "type": "EXPENSE",
+  "dueDate": "2026-05-15",
+  "paid": false
+}
+
+### Criar dívida parcelada
+POST http://localhost:8080/api/debts
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "householdId": 1,
+  "description": "Notebook",
+  "creditor": "Loja XPTO",
+  "totalAmount": 3600.00,
+  "installments": 12,
+  "firstDueDate": "2026-05-20"
+}
+
+### Criar meta
+POST http://localhost:8080/api/goals
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "householdId": 1,
+  "name": "Reserva de emergência",
+  "targetAmount": 10000.00,
+  "currentAmount": 500.00,
+  "deadline": "2026-12-31"
+}
+
+### Relatório mensal
+GET http://localhost:8080/api/reports/monthly?householdId=1&year=2026&month=5
+Authorization: Bearer {{token}}
+
+### Gerar notificações manualmente
+POST http://localhost:8080/api/notifications/generate?householdId=1
+Authorization: Bearer {{token}}
+
+### Exportar PDF
+GET http://localhost:8080/api/exports/monthly/pdf?householdId=1&year=2026&month=5
+Authorization: Bearer {{token}}
+
+### Exportar Excel
+GET http://localhost:8080/api/exports/monthly/excel?householdId=1&year=2026&month=5
+Authorization: Bearer {{token}}

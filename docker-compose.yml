@@ -1,0 +1,31 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: finance-postgres
+    restart: always
+    environment:
+      POSTGRES_DB: finance_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - finance_postgres_data:/var/lib/postgresql/data
+
+  app:
+    build: .
+    container_name: finance-api
+    restart: always
+    depends_on:
+      - postgres
+    environment:
+      DB_URL: jdbc:postgresql://postgres:5432/finance_db
+      DB_USERNAME: postgres
+      DB_PASSWORD: postgres
+      JWT_SECRET: minha-chave-jwt-super-secreta-com-mais-de-32-caracteres
+      JWT_EXPIRATION: 86400000
+    ports:
+      - "8080:8080"
+
+volumes:
+  finance_postgres_data:
