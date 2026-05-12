@@ -3,7 +3,7 @@
 Sistema financeiro pessoal/familiar desenvolvido com **Java Spring Boot** no backend e **React + Vite** no frontend.
 
 O projeto permite controlar carteiras, receitas, despesas, categorias, dívidas, metas financeiras, relatórios mensais e exportações.
-
+   
 ---
 
 ## Visão geral
@@ -678,5 +678,6 @@ O frontend já possui layout inicial em React com dashboard, navegação lateral
 - Criar filtros de mês e ano nos relatórios
 - Melhorar responsividade mobile
 - Criar deploy do backend e frontend
-#   s i s t e m a - f i n a n c e i r o - p e s s o a l  
+#   s i s t e m a - f i n a n c e i r o - p e s s o a l 
+ 
  
